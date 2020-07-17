@@ -1,0 +1,105 @@
+<% include partials/_header %>
+
+<div class="container">
+
+  <div class="row">
+    <!--FORM-->
+    <div class="col-md-5">
+      <div class="card bg-light">
+        <div class="card-body">
+          <form action="/add" method="post">
+            <div class="form-group">
+              <p class="font-weight-bold">Proprietaire</p>
+              <input class="form-control" type="text" name="Nomdupropriétaire" placeholder="Entrer votre nom et prenom">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">CIN</p>
+              <input class="form-control" type="text" name="CIN" placeholder="Entrer votre N° CIN">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">NEPH</p>
+              <input class="form-control" type="text" name="NEPH" placeholder="Entrer votre N° de permis">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Marque</p>
+              <input class="form-control" type="text" name="Marque" placeholder="Entrer la marque de voiture">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Type</p>
+              <input class="form-control" type="text" name="Type" placeholder="Entrer le type de voiture">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Genre</p>
+              <input class="form-control" type="text" name="Genre" placeholder="Entrer le genre de voiture">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Immatriculation</p>
+              <input class="form-control" type="text" name="Immatriculation" placeholder="Entrer le matricule">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Type de carburant</p>
+              <input class="form-control" type="text" name="Typecarburant" placeholder="Entrer le type de carburant">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Numero de chassis</p>
+              <input class="form-control" type="text" name="Numerodechassis" placeholder="Entrer le N° de chassis">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Nombre de cylindres</p>
+              <input class="form-control" type="text" name="Nombredecylindres" placeholder="Entrer le Nombre de cylindres">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Puissance fiscal</p>
+              <input class="form-control" type="text" name="Puissancefiscal" placeholder="Entrer la puissance fiscal">
+            </div>
+            <div class="form-group">
+              <p class="font-weight-bold">Nombre de place</p>
+              <input class="form-control" type="text" name="Nombredeplace" placeholder="Entrer le nombre de place">
+            </div>
+            <button class="btn btn-primary" type="submit" >
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div class="col-md-6">
+      <table class="table table-bordered table-hover">
+        <thead  class="thead-light">
+          <tr>
+            <th>N°</th>
+            <th>Proprietaire</th>
+            <th>CIN</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < tasks.length; i++) { %>
+            <tr>
+              <td><%= i + 1%></td>
+              <td><strong><%= tasks[i].Nomdupropriétaire %></strong></td>
+              <td><%= tasks[i].CIN %></td>
+              <td>
+                <a
+                  class="<%= tasks[i].status ? 'btn btn-success' : 'btn btn-dark'%>"
+                  href="/turn/<%= tasks[i]._id %>">Done</a>
+                <a href="/delete/<%= tasks[i]._id %>"
+                  class="btn btn-danger">
+                  Delete
+                </a>
+                <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info">
+                  Edit
+                </a>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>
+
